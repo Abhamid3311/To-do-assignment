@@ -38,7 +38,7 @@ const Login = () => {
     //erroe message
     let errorElement;
     if (error || error1) {
-        errorElement = <p className='text-danger'>{error?.message}</p>
+        errorElement = <p className='text-danger'>{error1?.message}</p>
     };
 
 
@@ -99,7 +99,7 @@ const Login = () => {
                     </form>
 
 
-                    <p className='text-center'>New to Khulna Tools?
+                    <p className='text-center'>New to IELTS Proficiency?
                         <Link to={'/register'} className='text-secondary ml-2'>please register</Link>
                     </p>
                     <p className="text-center ">

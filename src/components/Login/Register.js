@@ -1,4 +1,3 @@
-
 import { async } from '@firebase/util';
 import React from 'react';
 import { useAuthState, useCreateUserWithEmailAndPassword, useSendEmailVerification, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
@@ -79,15 +78,12 @@ const Register = () => {
                             <input name='password' type="password" placeholder="password" className="input input-bordered" />
                         </div>
 
-
-
-
                         <div className="form-control mt-6">
                             <input className="btn btn-accent" type="submit" value="Sign Up" />
                             <ToastContainer />
                         </div>
-
                     </form>
+
                     <p className='text-center'>Already have an account?
                         <Link to={'/login'} className='text-secondary ml-2'>please login</Link>
                     </p>
