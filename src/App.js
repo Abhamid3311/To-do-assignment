@@ -1,23 +1,25 @@
-import logo from './logo.svg';
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
+import Todos from './components/Dashboard/Todos';
+import Login from './components/Login/Login';
+import Register from './components/Login/Register';
+import ManageProfile from './components/ManageProfile/ManageProfile';
+import Footer from './components/SharedPage/Footer';
+import Header from './components/SharedPage/Header';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header></Header>
+      <Routes>
+        <Route path='/' element={<Todos></Todos>}></Route>
+        <Route path='/todos' element={<Todos></Todos>}></Route>
+        <Route path='/login' element={<Login></Login>}></Route>
+        <Route path='/register' element={<Register></Register>}></Route>
+        <Route path='/profile' element={<ManageProfile></ManageProfile>}></Route>
+      </Routes>
+      <Footer></Footer>
+
     </div>
   );
 }
