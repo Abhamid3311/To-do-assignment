@@ -1,5 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
+import Dashboard from './components/Dashboard/Dashboard';
 import Todos from './components/Dashboard/Todos';
 import Login from './components/Login/Login';
 import Register from './components/Login/Register';
@@ -13,6 +14,7 @@ function App() {
       <Header></Header>
       <Routes>
         <Route path='/' element={<Todos></Todos>}></Route>
+        <Route path='/dashboard' element={<Dashboard></Dashboard>}></Route>
         <Route path='/todos' element={<Todos></Todos>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/register' element={<Register></Register>}></Route>
