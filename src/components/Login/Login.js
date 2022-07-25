@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useSendPasswordResetEmail, useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { async } from '@firebase/util';
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import auth from '../../firebase.init';
 
@@ -104,7 +104,7 @@ const Login = () => {
                     </p>
                     <p className="text-center ">
                         <button onClick={handleResetPass} className="label-text-alt link link-hover text-center text-primary ">Forgot password?</button>
-                        <ToastContainer />
+
                     </p>
 
                     <div className="divider">OR</div>

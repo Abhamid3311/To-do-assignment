@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
+import useTodos from '../../hooks/useTodos';
 
 const AddTodo = () => {
+    const [todos, setTodos] = useTodos();
+
     const [title, setTitle] = useState('');
     const [desc, setDesc] = useState('');
     const [status, setStatus] = useState('');
@@ -40,9 +43,9 @@ const AddTodo = () => {
         })
             .then(res => res.json())
             .then(result => {
-                const newBikes = [ result];
-                // setBikes(newBikes);
-            })
+                const newTodos = [...setTodos, result];
+                setTodos(newTodos);
+            });
 
         e.target.reset();
 

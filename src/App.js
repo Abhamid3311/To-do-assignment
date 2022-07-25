@@ -3,7 +3,7 @@ import './App.css';
 import AddTodo from './components/Dashboard/AddTodo';
 import AllTodos from './components/Dashboard/AllTodos';
 import Dashboard from './components/Dashboard/Dashboard';
-
+import { ToastContainer } from 'react-toastify';
 import Login from './components/Login/Login';
 import Register from './components/Login/Register';
 import ManageProfile from './components/ManageProfile/ManageProfile';
@@ -33,6 +33,7 @@ function App() {
       </Routes>
       <Footer></Footer>
 
+      <ToastContainer />
 
     </div>
   );

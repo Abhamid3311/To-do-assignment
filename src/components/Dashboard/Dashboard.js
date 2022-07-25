@@ -18,11 +18,11 @@ const Dashboard = () => {
             </div>
             <div className="drawer-side -z-0">
                 <label htmlFor="dashboard-sidebar" className="drawer-overlay"></label>
-                <ul className="menu p-4 overflow-y-auto w-50 font-bold text-accent lg:bg-gray-300">
+                <ul className="menu p-4 overflow-y-auto w-50 font-bold text-black lg:bg-gray-300">
                     {/* <!-- Sidebar content here --> */}
 
-                    <li><Link to='/dashboard'>Add To-Do</Link></li>
-                    <li><Link to='/dashboard/allTodos'>All To-do</Link></li>
+                    <li><Link to='/dashboard'>Add ToDo</Link></li>
+                    <li><Link to='/dashboard/allTodos'>Todo list</Link></li>
 
                 </ul>
 
