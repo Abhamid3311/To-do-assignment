@@ -30,7 +30,7 @@ const AddTodo = () => {
         };
 
         //send to server
-        const url = `http://localhost:5000/todo/`;
+        const url = `https://mighty-wave-16131.herokuapp.com/todo/`;
         fetch(url, {
             method: 'POST',
             headers: {

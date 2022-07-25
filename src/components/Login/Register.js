@@ -43,7 +43,7 @@ const Register = () => {
         };
 
         //send to server
-        const url = `http://localhost:5000/user/`;
+        const url = `https://mighty-wave-16131.herokuapp.com/user/`;
         fetch(url, {
             method: 'POST',
             headers: {

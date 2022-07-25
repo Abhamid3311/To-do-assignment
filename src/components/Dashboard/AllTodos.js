@@ -16,7 +16,7 @@ const AllTodos = () => {
     const handleDeleteBtn = id => {
         const procced = window.confirm('You want to delete?');
         if (procced) {
-            const url = `http://localhost:5000/todo/${id}`;
+            const url = `https://mighty-wave-16131.herokuapp.com/todo/${id}`;
             fetch(url, {
                 method: 'DELETE'
             })
