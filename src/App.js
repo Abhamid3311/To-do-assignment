@@ -7,7 +7,7 @@ import { ToastContainer } from 'react-toastify';
 import Login from './components/Login/Login';
 import Register from './components/Login/Register';
 import ManageProfile from './components/ManageProfile/ManageProfile';
-import UpdatePass from './components/ManageProfile/UpdatePass';
+
 import Footer from './components/SharedPage/Footer';
 import Header from './components/SharedPage/Header';
 import 'react-toastify/dist/ReactToastify.css';
@@ -34,7 +34,6 @@ function App() {
           </RequireAuth>}>
         </Route>
 
-        <Route path='/' element={<UpdatePass></UpdatePass>}></Route>
       </Routes>
       <Footer></Footer>
 

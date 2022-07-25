@@ -25,7 +25,7 @@ const Register = () => {
     if (error || gerror || UpdateError) {
         errorElement = <p className='text-danger'>{error?.message}</p>
     };
-    
+
     if (guser || user1) {
         navigate('/');
     }
@@ -98,7 +98,7 @@ const Register = () => {
                     </form>
 
                     <p className='text-center'>Already have an account?
-                        <Link to={'/login'} className='text-secondary ml-2'>please login</Link>
+                        <Link to={'/login'} className='text-orange-500 ml-2'>Please Login</Link>
                     </p>
 
                     <div className="divider">OR</div>

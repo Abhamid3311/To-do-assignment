@@ -1,52 +1,59 @@
 import React, { useState } from 'react';
-import { useAuthState, useUpdatePassword, useUpdateEmail } from 'react-firebase-hooks/auth';
-
+import { useAuthState, useUpdatePassword, useUpdateEmail, useUpdateProfile } from 'react-firebase-hooks/auth';
+import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 
 
 const ManageProfile = () => {
-    const [user, loading] = useAuthState(auth);
-     const [email, setEmail] = useState('');
-     const [updateEmail, updating, error] = useUpdateEmail(auth);
+    const [user] = useAuthState(auth);
+
+    const [name, setName] = useState('');
     const [password, setPassword] = useState('');
+
     const [updatePassword, updating1, error1] = useUpdatePassword(auth);
+    const [updateProfile, updating2, UpdateError] = useUpdateProfile(auth);
 
-    console.log(user);
 
-    /* if (loading) {
-        return <p>Loading...</p>
-    };
-     */
-
-    if (error1) {
+    if (error1 || UpdateError) {
         return (
             <div>
                 <p>Error: {error1?.message}</p>
             </div>
         );
     }
-    if (updating1) {
+    if (updating1 || updating2) {
         return <p>Updating...</p>;
     }
+
+    const handleUpdateBtn = async () => {
+        await updatePassword(user?.email);
+        await updateProfile({ displayName: name });
+        toast.success('Profile Updated');
+    };
+
     return (
-        <div>
-            <h2>Update your Profile</h2>
+        <section className='mb-10'>
+            <h2 className='text-3xl text-orange-700 text-semibold my-7'>Update your Profile</h2>
 
             <div className='w-1/2 mx-auto'>
-                <h2>UserName: {user?.displayName}</h2>
-                <h2>UserEmail: {user?.email}</h2>
+                <div className='text-left mb-10'>
+                    <h2>UserName: {user?.displayName}</h2>
+                    <h2>UserEmail: {user?.email}</h2>
+                </div>
                 <div>
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text">Email</span>
+                            <span className="label-text">UserName</span>
                         </label>
                         <input
-                            name='email'
-                            type="email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
+                            name='name'
+                            type="text"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
                             className="input input-bordered" />
                     </div>
+
+
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text">Password</span>
@@ -58,24 +65,22 @@ const ManageProfile = () => {
                             onChange={(e) => setPassword(e.target.value)}
                             className="input input-bordered" />
                     </div>
+
+
                     <button
-                        onClick={async () => {
-                            // await updateEmail(user?.email);
-                            await updatePassword(user?.email);
-                            console.log(user?.email)
-                            alert('Updated Profile');
-                        }}
-                        className='btn btn-primary'
+                        onClick={handleUpdateBtn}
+                        className='btn btn-primary mt-4'
                     >
                         Update password
                     </button>
+
                 </div>
                 <div>
 
                 </div>
             </div>
 
-        </div>
+        </section>
     );
 };
 

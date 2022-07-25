@@ -100,10 +100,10 @@ const Login = () => {
 
 
                     <p className='text-center'>New to IELTS Proficiency?
-                        <Link to={'/register'} className='text-secondary ml-2'>please register</Link>
+                        <Link to={'/register'} className='text-orange-500 ml-2'>Please Register</Link>
                     </p>
                     <p className="text-center ">
-                        <button onClick={handleResetPass} className="label-text-alt link link-hover text-center text-primary ">Forgot password?</button>
+                        <button onClick={handleResetPass} className="label-text-alt link link-hover text-center text-orange-500 ">Forgot Password?</button>
                     </p>
 
                     <div className="divider">OR</div>
