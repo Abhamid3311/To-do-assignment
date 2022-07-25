@@ -7,6 +7,11 @@ const AllTodos = () => {
     const [todos, setTodos] = useTodos();
 
 
+    //Edit Todo
+    const handleEditTodo = id => {
+        console.log('edit Todo', id);
+    }
+
     //Delete Todo
     const handleDeleteBtn = id => {
         const procced = window.confirm('You want to delete?');
@@ -26,10 +31,10 @@ const AllTodos = () => {
                 })
         };
     };
+
     return (
         <div className='pb-10'>
             <h2 className='text-3xl text-orange-700 text-semibold my-7'> All Todos</h2>
-
 
             <div className="overflow-x-auto">
                 <table className="table table-normal w-4/5 mx-auto">
@@ -49,6 +54,7 @@ const AllTodos = () => {
                                 todo={todo}
                                 index={index}
                                 handleDeleteBtn={handleDeleteBtn}
+                                handleEditTodo={handleEditTodo}
                             ></Todo>)
                         }
                     </tbody>

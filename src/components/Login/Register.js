@@ -1,12 +1,8 @@
-import { async } from '@firebase/util';
 import React from 'react';
-import { useAuthState, useCreateUserWithEmailAndPassword, useSendEmailVerification, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { Link, useNavigate } from 'react-router-dom';
-import { toast, ToastContainer } from 'react-toastify';
 
-import 'react-toastify/dist/ReactToastify.css';
 import auth from '../../firebase.init';
-
 
 const Register = () => {
     const navigate = useNavigate();
@@ -17,23 +13,19 @@ const Register = () => {
         loading,
         error,
     ] = useCreateUserWithEmailAndPassword(auth);
-
-    const [sendEmailVerification, sending2,] = useSendEmailVerification(
-        auth);
-
     const [updateProfile, updating, UpdateError] = useUpdateProfile(auth);
 
-
-
-
-    if (loading || updating || gloading) {
+    //Loading
+    if (loading || gloading || updating) {
         return <button className="btn btn-square loading"></button >;
     };
-    let errorElement;
 
-    if (error || gerror) {
+    //Error handeling
+    let errorElement;
+    if (error || gerror || UpdateError) {
         errorElement = <p className='text-danger'>{error?.message}</p>
     };
+    
     if (guser || user1) {
         navigate('/');
     }
@@ -44,10 +36,30 @@ const Register = () => {
         const email = e.target.email.value;
         const password = e.target.password.value;
 
+        const newUser = {
+            name,
+            email,
+            password
+        };
+
+        //send to server
+        const url = `http://localhost:5000/user/`;
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(newUser)
+        })
+            .then(res => res.json())
+            .then(result => {
+                const newUser = [result];
+
+            });
+
+        //send to firebase   
         await createUserWithEmailAndPassword(email, password);
         await updateProfile({ displayName: name });
-        await sendEmailVerification();
-        toast.success('Sent verification email');
 
     };
 
@@ -77,10 +89,11 @@ const Register = () => {
                             </label>
                             <input name='password' type="password" placeholder="password" className="input input-bordered" />
                         </div>
+                        {errorElement}
 
                         <div className="form-control mt-6">
                             <input className="btn btn-accent" type="submit" value="Sign Up" />
-                            <ToastContainer />
+
                         </div>
                     </form>
 

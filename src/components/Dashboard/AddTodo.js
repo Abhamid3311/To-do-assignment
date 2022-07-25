@@ -3,13 +3,10 @@ import useTodos from '../../hooks/useTodos';
 
 const AddTodo = () => {
     const [todos, setTodos] = useTodos();
-
     const [title, setTitle] = useState('');
     const [desc, setDesc] = useState('');
     const [status, setStatus] = useState('');
 
-
-    console.log();
 
     //get Value from Form
     const handleTitle = e => {
@@ -23,6 +20,7 @@ const AddTodo = () => {
         setStatus(e.target.value)
     };
 
+    //Handle Add TODO
     const handleAddToDo = e => {
         e.preventDefault();
         const newTodo = {
@@ -30,7 +28,6 @@ const AddTodo = () => {
             desc,
             status,
         };
-        console.log(newTodo);
 
         //send to server
         const url = `http://localhost:5000/todo/`;
@@ -52,6 +49,7 @@ const AddTodo = () => {
     };
     return (
         <div>
+            <h2 className='text-3xl text-orange-700 text-semibold my-7'>Please Add a TO-Do</h2>
             <form className='my-12' onSubmit={handleAddToDo}>
                 <input
                     type="text"

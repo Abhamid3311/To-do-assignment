@@ -10,6 +10,8 @@ import ManageProfile from './components/ManageProfile/ManageProfile';
 import UpdatePass from './components/ManageProfile/UpdatePass';
 import Footer from './components/SharedPage/Footer';
 import Header from './components/SharedPage/Header';
+import 'react-toastify/dist/ReactToastify.css';
+import RequireAuth from './components/SharedPage/RequireAuth';
 
 function App() {
   return (
@@ -21,15 +23,18 @@ function App() {
         </Dashboard>}>
           <Route index path='/dashboard' element={<AddTodo></AddTodo>}></Route>
           <Route path='/dashboard/allTodos' element={<AllTodos></AllTodos>}></Route>
-
         </Route>
-
 
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/register' element={<Register></Register>}></Route>
-        <Route path='/profile' element={<ManageProfile></ManageProfile>}></Route>
-        <Route path='/' element={<ManageProfile></ManageProfile>}></Route>
-        <Route path='/pass' element={<UpdatePass></UpdatePass>}></Route>
+
+        <Route path='/profile' element={
+          <RequireAuth>
+            <ManageProfile></ManageProfile>
+          </RequireAuth>}>
+        </Route>
+
+        <Route path='/' element={<UpdatePass></UpdatePass>}></Route>
       </Routes>
       <Footer></Footer>
 

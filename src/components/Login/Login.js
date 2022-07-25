@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useSendPasswordResetEmail, useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
-import { async } from '@firebase/util';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import auth from '../../firebase.init';
@@ -18,8 +17,6 @@ const Login = () => {
     ] = useSignInWithEmailAndPassword(auth);
     const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
 
-
-
     const navigate = useNavigate();
     const location = useLocation();
     let from = location.state?.from?.pathname || "/";
@@ -30,7 +27,7 @@ const Login = () => {
         };
     }, [user, user1, from, navigate]);
 
-    if (loading || loading1) {
+    if (loading || loading1 || sending) {
         return <button className="btn btn-square loading"></button>;
     };
 
@@ -44,7 +41,8 @@ const Login = () => {
 
     const handleEmailBlur = e => {
         setEmail(e.target.value);
-    }
+    };
+
     //handle Login Form
     const handleLoginForm = e => {
         e.preventDefault();
@@ -57,11 +55,13 @@ const Login = () => {
             navigate('/');
         }
     };
+
     //Password Reset Email sending
     const handleResetPass = async () => {
         await sendPasswordResetEmail(email);
         toast.warn('password sent')
-    }
+    };
+
     return (
         <div className="hero min-h-screen">
             <div className="card flex-shrink-0 w-full max-w-lg shadow-2xl bg-base-100">
@@ -104,7 +104,6 @@ const Login = () => {
                     </p>
                     <p className="text-center ">
                         <button onClick={handleResetPass} className="label-text-alt link link-hover text-center text-primary ">Forgot password?</button>
-
                     </p>
 
                     <div className="divider">OR</div>
@@ -115,7 +114,6 @@ const Login = () => {
                     </button>
                 </div>
             </div>
-
         </div>
     );
 };
