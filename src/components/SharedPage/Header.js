@@ -14,6 +14,8 @@ const Header = () => {
 
     //Menu items
     const menuItems = <>
+
+        <li><Link to='/'>Home</Link></li>
         <li><Link to='/dashboard'>Dashboard</Link></li>
         <li><Link to='/profile'>Manage Profile</Link></li>
         <button className="btn btn-ghost">{user ? <button onClick={logOut}>Sign Out</button> : <Link to={'/login'} >Login</Link>}</button>
@@ -33,7 +35,7 @@ const Header = () => {
                     </div>
                     <Link to='/dashboard' className="btn btn-ghost normal-case text-xl">IELTS Proficiency</Link>
                 </div>
-                <div className="navbar-center hidden lg:flex">
+                <div className="navbar-center hidden lg:flex ">
                     <ul className="menu menu-horizontal p-0">
                         {menuItems}
                     </ul>
@@ -44,10 +46,7 @@ const Header = () => {
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                     </label>
                 </div>
-
             </div>
-
-
         </header>
     );
 };

@@ -12,13 +12,15 @@ import Footer from './components/SharedPage/Footer';
 import Header from './components/SharedPage/Header';
 import 'react-toastify/dist/ReactToastify.css';
 import RequireAuth from './components/SharedPage/RequireAuth';
+import NotFound from './components/SharedPage/NotFound';
+import Home from './components/Home';
 
 function App() {
   return (
     <div className="App">
       <Header></Header>
       <Routes>
-
+        <Route path='/' element={<Home></Home>}></Route>
         <Route path='/dashboard' element={<Dashboard>
         </Dashboard>}>
           <Route index path='/dashboard' element={<AddTodo></AddTodo>}></Route>
@@ -33,12 +35,11 @@ function App() {
             <ManageProfile></ManageProfile>
           </RequireAuth>}>
         </Route>
-
+        <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
+
       <Footer></Footer>
-
       <ToastContainer />
-
     </div>
   );
 }
