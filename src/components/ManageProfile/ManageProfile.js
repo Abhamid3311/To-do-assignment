@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useAuthState, useUpdatePassword, useUpdateEmail, useUpdateProfile } from 'react-firebase-hooks/auth';
+import { useAuthState, useUpdatePassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 
@@ -33,7 +33,7 @@ const ManageProfile = () => {
 
     return (
         <section className='mb-10'>
-            <h2 className='text-3xl text-orange-700 text-semibold my-7'>Update your Profile</h2>
+            <h2 className='text-3xl text-orange-700 text-semibold my-7'>Manage your Profile</h2>
 
             <div className='w-1/2 mx-auto'>
                 <div className='text-left mb-10'>
@@ -71,7 +71,7 @@ const ManageProfile = () => {
                         onClick={handleUpdateBtn}
                         className='btn btn-primary mt-4'
                     >
-                        Update password
+                        Update Profile
                     </button>
 
                 </div>
